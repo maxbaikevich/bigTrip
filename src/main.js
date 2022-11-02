@@ -6,6 +6,7 @@ import {createSortTemplate} from './view/sort-view';
 import {createdTripEventListTemplate} from './view/trip-event-list-view';
 import {createTripEventItemTemplate} from './view/trip-event-item-view';
 import {createEventEditTemplate} from './view/trip-event-edit-view';
+import {createEventEditHeaderTemplate} from './view/card-event-edit-header';
 const countTripEvent = 3;
 const siteTripMain = document.querySelector('.trip-main');
 renderTemplate(siteTripMain, createInfoView(), RenderPosition.AFTERBEGIN);
@@ -19,6 +20,8 @@ renderTemplate(tripEvents, createSortTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(tripEvents, createdTripEventListTemplate(), RenderPosition.BEFOREEND);
 const tripEventsList = tripEvents.querySelector('.trip-events__list');
 renderTemplate(tripEventsList, createEventEditTemplate(), RenderPosition.BEFOREEND);
+const eventEditCard = tripEventsList.querySelector('.event--edit');
+renderTemplate(eventEditCard, createEventEditHeaderTemplate(), RenderPosition.AFTERBEGIN);
 for(let i = 0; i < countTripEvent; i++) {
   renderTemplate(tripEventsList, createTripEventItemTemplate(), RenderPosition.BEFOREEND);
 }
