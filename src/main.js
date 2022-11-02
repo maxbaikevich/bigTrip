@@ -6,8 +6,12 @@ import {createSortTemplate} from './view/sort-view';
 import {createdTripEventListTemplate} from './view/trip-event-list-view';
 import {createTripEventItemTemplate} from './view/trip-event-item-view';
 import {createEventEditTemplate} from './view/trip-event-edit-view';
-import {createEventEditHeaderTemplate} from './view/card-event-edit-header';
+import {createEventEditHeaderTemplate} from './view/card-header';
+import {createCardDetailsTemplate} from './view/card-details';
+import {createDestinationTemplate} from './view/card-destination';
+import {createHeaderTypeItem} from './view/header-type-item';
 const countTripEvent = 3;
+const typeItemData = ['Taxi','Bus','Train','Ship','Drive','Flight','Check-in','Sightseeing','Restaurant'];
 const siteTripMain = document.querySelector('.trip-main');
 renderTemplate(siteTripMain, createInfoView(), RenderPosition.AFTERBEGIN);
 const siteControlNavigation = siteTripMain.querySelector( '.trip-controls__navigation');
@@ -22,6 +26,13 @@ const tripEventsList = tripEvents.querySelector('.trip-events__list');
 renderTemplate(tripEventsList, createEventEditTemplate(), RenderPosition.BEFOREEND);
 const eventEditCard = tripEventsList.querySelector('.event--edit');
 renderTemplate(eventEditCard, createEventEditHeaderTemplate(), RenderPosition.AFTERBEGIN);
+const eventHeader = eventEditCard.querySelector('.event__type-group');
+for(let i = 0; i < typeItemData.length; i++) {
+  renderTemplate(eventHeader, createHeaderTypeItem(typeItemData[i]), RenderPosition.BEFOREEND);
+}
+renderTemplate(eventEditCard, createCardDetailsTemplate(), RenderPosition.BEFOREEND);
+const cardDetails = tripEventsList.querySelector('.event__details');
+renderTemplate(cardDetails, createDestinationTemplate(), RenderPosition.BEFOREEND);
 for(let i = 0; i < countTripEvent; i++) {
   renderTemplate(tripEventsList, createTripEventItemTemplate(), RenderPosition.BEFOREEND);
 }
