@@ -10,8 +10,37 @@ import {createEventEditHeaderTemplate} from './view/card-header';
 import {createCardDetailsTemplate} from './view/card-details';
 import {createDestinationTemplate} from './view/card-destination';
 import {createHeaderTypeItem} from './view/header-type-item';
+import {createCardOfferSelectorElementTemplate} from './view/card-offer-selector-element';
 const countTripEvent = 3;
 const typeItemData = ['Taxi','Bus','Train','Ship','Drive','Flight','Check-in','Sightseeing','Restaurant'];
+const offerSelector = [
+  {
+    title: 'Add luggage',
+    price: 50,
+    name: 'luggage'
+  },
+  {
+    title: 'Switch to comfort',
+    price: 80,
+    name: 'comfort'
+  },
+  {
+    title: 'Add meal',
+    price: 15,
+    name: 'meal'
+  },
+  {
+    title: 'Choose seats',
+    price: 5,
+    name: 'seats'
+  },
+  {
+    title: 'Travel by train',
+    price: 40,
+    name: 'train'
+  }
+];
+
 const siteTripMain = document.querySelector('.trip-main');
 renderTemplate(siteTripMain, createInfoView(), RenderPosition.AFTERBEGIN);
 const siteControlNavigation = siteTripMain.querySelector( '.trip-controls__navigation');
@@ -32,6 +61,10 @@ for(let i = 0; i < typeItemData.length; i++) {
 }
 renderTemplate(eventEditCard, createCardDetailsTemplate(), RenderPosition.BEFOREEND);
 const cardDetails = tripEventsList.querySelector('.event__details');
+const availableOffers = cardDetails.querySelector('.event__available-offers');
+for(let i = 0; i < offerSelector.length; i++) {
+  renderTemplate(availableOffers, createCardOfferSelectorElementTemplate(offerSelector[i]), RenderPosition.BEFOREEND);
+}
 renderTemplate(cardDetails, createDestinationTemplate(), RenderPosition.BEFOREEND);
 for(let i = 0; i < countTripEvent; i++) {
   renderTemplate(tripEventsList, createTripEventItemTemplate(), RenderPosition.BEFOREEND);
