@@ -11,6 +11,7 @@ import {createCardDetailsTemplate} from './view/card-details';
 import {createDestinationTemplate} from './view/card-destination';
 import {createHeaderTypeItem} from './view/header-type-item';
 import {createCardOfferSelectorElementTemplate} from './view/card-offer-selector-element';
+// import {createPhotosContainerTemplate} from './view/card-photos-container';
 const countTripEvent = 3;
 const typeItemData = ['Taxi','Bus','Train','Ship','Drive','Flight','Check-in','Sightseeing','Restaurant'];
 const offerSelector = [
